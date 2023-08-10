@@ -1,12 +1,16 @@
-import { Checkbox, HStack, Stack, Text } from '@chakra-ui/react';
+import { Checkbox, HStack, Stack, Text, Button } from '@chakra-ui/react';
 import { useFilter, useTodos } from '../store.js';
 
 const Todo = ({ id, title, completed }) => {
   const toggleTodo = useTodos((state) => state.toggleTodo);
+  const deleteTodo = useTodos((state) => state.deleteTodo);
   return (
     <HStack spacing={4}>
       <Checkbox isChecked={completed} onChange={() => toggleTodo(id)} />
       <Text>{title}</Text>
+      <Button colorScheme="red" size="xs" onClick={() => deleteTodo(id)}>
+        delete
+      </Button>
     </HStack>
   );
 };

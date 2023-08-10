@@ -25,6 +25,13 @@ export const useTodos = create(
       //       todos: [...state.todos, { id: nanoid(), title, completed: false }],
       //     })),
 
+      deleteTodo: (todoId) =>
+        set((state) => {
+          // Видаляємо тудушку зі списку за заданим todoId
+          const updatedTodos = state.todos.filter((todo) => todo.id !== todoId);
+          return { todos: updatedTodos };
+        }),
+
       addTodo: (title) => {
         const newTodo = { id: nanoid(), title, completed: false };
 
